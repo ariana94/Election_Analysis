@@ -49,7 +49,7 @@ with open(file_to_load) as election_data:
 with open(file_to_save, "w") as txt_file:
     # Print the final vote found to the terminal
     election_results = (
-        f"\nElection Results\n"
+        f"\ngit puElection Results\n"
         f"-------------------\n"
         f"Total Votes: {total_votes:,}\n"
         f"-------------------\n")
@@ -66,7 +66,11 @@ with open(file_to_save, "w") as txt_file:
         # Calculate the percentage of votes
         vote_percentage = float(votes) / float(total_votes) * 100
 
-        ##print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+        candidate_results = (f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+        # Print each candidate, vote, and percentage
+        print(candidate_results)
+        # Save candidate results to text file
+        txt_file.write(candidate_results)
 
         if (votes > winning_count) and (vote_percentage > winning_percentage):
             # If true then set winning_count = votes and winning_percentage = vote_percentage
@@ -82,4 +86,6 @@ with open(file_to_save, "w") as txt_file:
         f"Winning Vote Count: {winning_count:,}\n"
         f"Winning Percentage: {winning_percentage:.1f}%\n"
         f"----------------------\n")
-    ##print(winning_candidate_summary)
+    print(winning_candidate_summary)
+    # Save winning candidate summary to text file
+    txt_file.write(winning_candidate_summary)
